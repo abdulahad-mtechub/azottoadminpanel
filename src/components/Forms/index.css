@@ -83,6 +83,18 @@
   margin-bottom: 12px !important;
 }
 
+.custom-input .ant-input,
+.ant-input-password.ant-input-password-middle
+{
+  color: gray !important;
+  background-color: #181D52 !important;
+  border-color: gray !important;
+}
+.custom-input .ant-input::placeholder{
+  color: gray !important;
+}
+
+
 /* otp cs */
 
 .otp-cs .ant-otp {

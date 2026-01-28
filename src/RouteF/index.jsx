@@ -16,8 +16,8 @@ const Fallback = () => (
     >
       <Image
         width={200}
-        src="/assets/images/logo.webp"
-        alt="jusoor-logo"
+        src="/assets/images/logo.svg"
+        alt="Azotto-logo"
         fetchPriority="high"
         preview={false}
       />

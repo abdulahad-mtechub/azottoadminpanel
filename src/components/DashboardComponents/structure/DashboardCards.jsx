@@ -29,40 +29,40 @@ const DashboardCards = () => {
       id: 1,
       icon: "dc-1.png",
       title: formatNumber(stats.totalBusinesses || 0),
-      subtitle: "Total Businesses",
+      subtitle: "System Status",
     },
     {
       id: 2,
       icon: "dc-2.png",
       title: formatNumber(stats.completedDeals || 0),
-      subtitle: "Completed Deals",
+      subtitle: "Active VINs",
     },
     {
       id: 3,
       icon: "dc-3.png",
       title: formatNumber(stats.requestMeetings || 0),
-      subtitle: "Request for Meetings",
+      subtitle: "Pending Blockchain Transactions",
     },
     {
       id: 4,
       icon: "dc-4.png",
       title: formatNumber(stats.scheduleMeetings || 0),
-      subtitle: "Scheduled Meetings",
+      subtitle: "Alerts",
     },
   ];
 
   return (
     <>
-      <Card className="border-gray radius-12">
+      <Card className="main-card-color radius-12">
         <Row gutter={[14, 14]}>
           <Col span={24}>
-            <ModuleTopHeading level={4} name={t("Business Statistics")} />
+            <ModuleTopHeading level={4} name={t("Reservation Statistics")} />
           </Col>
           <Col
             xs={{ span: 24 }}
             sm={{ span: 24 }}
             md={{ span: 24 }}
-            lg={{ span: 19 }}
+            lg={{ span: 24 }}
           >
             <Row gutter={[14, 24]} className="h-100">
               {cardsData?.map((item, index) => (
@@ -73,7 +73,7 @@ const DashboardCards = () => {
                   lg={{ span: 6 }}
                   key={index}
                 >
-                  <Card className={`shadow-d radius-12 h-100 border-gray`}>
+                  <Card className={`shadow-d radius-12 h-100 border-gray`} style={{backgroundColor: '#202452'}}>
                     <Flex gap={8} vertical>
                       <div>
                         <img
@@ -83,10 +83,10 @@ const DashboardCards = () => {
                           fetchPriority="high"
                         />
                       </div>
-                      <Text className="fs-14 text-gray">
+                      <Text className="fs-14 text-white">
                         {t(item?.subtitle)}
                       </Text>
-                      <Title level={5} className="fw-600 text-black m-0">
+                      <Title level={5} className="fw-600 text-white m-0">
                         {item?.title}
                       </Title>
                     </Flex>
@@ -95,7 +95,7 @@ const DashboardCards = () => {
               ))}
             </Row>
           </Col>
-          <Col
+          {/* <Col
             xs={{ span: 24 }}
             sm={{ span: 24 }}
             md={{ span: 24 }}
@@ -111,13 +111,13 @@ const DashboardCards = () => {
                     fetchPriority="high"
                   />
                 </div>
-                <Text className="fs-14 text-gray">{t("Today's Meeting")}</Text>
+                <Text className="fs-14 text-gray">{t("")}</Text>
                 <Title level={5} className="fw-600 text-black m-0">
                   {stats.todaysMeetings || 0}
                 </Title>
               </Flex>
             </Card>
-          </Col>
+          </Col> */}
         </Row>
       </Card>
     </>

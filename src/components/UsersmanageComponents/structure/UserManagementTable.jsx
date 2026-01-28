@@ -101,36 +101,22 @@ const UserManagementTable = ({ setVisible, setEditItem }) => {
 
   const usermanageColumn = [
     {
-      title: t("Full Name"),
-      dataIndex: "fullname",
+      title: t("Name"),
+      dataIndex: "name",
     },
     {
-      title: t("Email Address"),
+      title: t("Email"),
       dataIndex: "email",
     },
     {
-      title: t("Region"),
-      dataIndex: "district",
+      title: t("Role"),
+      dataIndex: "role",
       render: (district) => t(district),
     },
     {
-      title: t("City"),
-      dataIndex: "city",
+      title: t("Wallet Address"),
+      dataIndex: "wallet",
       render: (city) => t(city),
-    },
-    {
-      title: t("Mobile Number"),
-      dataIndex: "mobileno",
-    },
-    {
-      title: t("Type"),
-      dataIndex: "type",
-      render: (type) =>
-        type === "new" ? (
-          <Text className="btnpill fs-12 branded">{t("New")}</Text>
-        ) : (
-          <Text className="btnpill fs-12 pending">{t("Old")}</Text>
-        ),
     },
     {
       title: t("Status"),
@@ -146,6 +132,10 @@ const UserManagementTable = ({ setVisible, setEditItem }) => {
           );
         }
       },
+    },
+    {
+      title: t("Created At"),
+      dataIndex: "createdAt",
     },
     {
       title: t("Action"),
@@ -347,7 +337,7 @@ const UserManagementTable = ({ setVisible, setEditItem }) => {
   return (
     <>
       {contextHolder}
-      <Card className="radius-12 border-gray">
+      <Card className="radius-12 border-gray main-card-color">
         <Flex vertical gap={20}>
           <Form form={form} layout="vertical">
             <Row gutter={[16, 16]}>
@@ -370,7 +360,7 @@ const UserManagementTable = ({ setVisible, setEditItem }) => {
                     value={searchTerm}
                     onChange={(e) => handleSearch(e.target.value)}
                   />
-                  <MySelect
+                  {/* <MySelect
                     withoutForm
                     options={districts}
                     onChange={handleDistrictClick}
@@ -386,12 +376,12 @@ const UserManagementTable = ({ setVisible, setEditItem }) => {
                     allowClear
                     showKey
                     disabled={!selectedDistrict}
-                  />
+                  /> */}
                   <MySelect
                     withoutForm
                     options={typeItems}
                     onChange={handleTypeChange}
-                    placeholder={t("Type")}
+                    placeholder={t("Role")}
                     allowClear
                     showKey
                   />

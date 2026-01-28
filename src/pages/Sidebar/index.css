@@ -5,9 +5,10 @@
 }
 
 .site-layout .site-layout-background {
-  background: var(--white-text);
+  background: var(--dark-brand-color);
   /* margin: 10px 20px; */
-  border-radius: 10px !important;
+  /* border-radius: 10px !important; */
+  border-color: rgb(197, 186, 186) !important;
   margin-left: 0px !important;
   margin-bottom: 0px !important;
 }
@@ -84,9 +85,16 @@
   margin-right: 0px !important;
   width: 100% !important;
   border-radius: 10px !important;
-  color: var(--black-color) !important;
+  color: #fff !important;
   padding-left: 11px !important;
   border-left: 5px solid transparent;
+}
+
+.listitem .ant-menu-item-selected {
+  background-color: var(--light-brand) !important;
+  border-left: 5px solid var(--brand-color) !important;
+  color: var(--brand-color) !important;
+  font-weight: 600;
 }
 
 .listitem .ant-menu-sub {
@@ -167,7 +175,7 @@
 
 .ant-menu-dark,
 .ant-menu-dark > .ant-menu {
-  background: var(--white-text) !important;
+  background: var(--main-card-color) !important;
 }
 
 .ant-menu-dark.ant-menu-inline .ant-menu-sub.ant-menu-inline {

@@ -37,12 +37,12 @@ const PasswordManager = () => {
     <>
       {contextHolder}
       <Card
-        className="radius-12 border-gray"
+        className="radius-12 border-gray main-card-color"
         actions={[
-          <Flex justify="end" className="px-3">
+          <Flex justify="end" className="px-3 main-card-color">
             <Button
               aria-labelledby="Save Changes"
-              className="btnsave bg-brand"
+              className="btnsave bg-brand "
               type="primary"
               onClick={() => form.submit()}
               loading={loading}

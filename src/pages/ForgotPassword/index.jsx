@@ -255,7 +255,7 @@ const ForgotPassword = () => {
             <div className="logo">
               <img
                 src="/assets/images/logo-1.png"
-                alt="jusoor logo"
+                alt="Azotto logo"
                 width={70}
                 fetchPriority="high"
               />
@@ -466,24 +466,21 @@ const ForgotPassword = () => {
         <Flex vertical justify="space-between" className="h-100">
           <Flex vertical justify="center" align="center" className="logo-sp">
             <Image
-              src="/assets/images/logo.webp"
+              src="/assets/images/logo.svg"
               alt="jusoor-logo"
               fetchPriority="high"
               width={200}
               preview={false}
             />
-            <Title level={5} className="m-0 text-white text-center">
-              Shorten the path
-            </Title>
           </Flex>
-          <div className="bg-shade">
+          {/* <div className="bg-shade">
             <img
               src="/assets/images/login.gif"
               alt="signup gif"
               className="w-100 opacity-7"
               fetchPriority="high"
             />
-          </div>
+          </div> */}
         </Flex>
       </Col>
     </Row>

@@ -117,7 +117,7 @@ const BankAccountCard = ({ settingId }) => {
             : undefined
         }
       >
-        <Card className="radius-12 border-gray">
+        <Card className="radius-12 border-gray main-card-color">
           <Flex
             gap={10}
             align="center"

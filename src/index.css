@@ -14,7 +14,10 @@
 }
 
 :root {
-  --brand-color: #1d4ed8;
+  --brand-color: #0000FF;
+  --dark-brand-color: #0A0E27;
+  --dark-border-color: #1D2137;
+  --main-card-color:#131746;
   --secondary-color: #d8e4fc;
   --light-brand: #e9eefc;
   --dark-blue: #07072d;
@@ -109,7 +112,12 @@ body.ltr {
 }
 
 .border-gray {
-  border: 1px solid var(--border-gray) !important;
+  border: 1px solid var(--dark-border-color) !important;
+}
+
+.main-card-color {
+  background-color: var(--main-card-color) !important;
+  border-color: #c7c7c71a !important;
 }
 
 .border-light-gray {
@@ -205,11 +213,11 @@ body.ltr {
 }
 
 .site-layout {
-  background: var(--bg-body) !important;
+  background: var(--dark-brand-color) !important;
 }
 
 .ant-layout .ant-layout-sider {
-  background: var(--white-text) !important;
+  background: var(--main-card-color) !important;
   /* box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px; */
   overflow-x: hidden;
 }
@@ -447,6 +455,24 @@ body.ltr {
 .table-cs .ant-table-container table > thead > tr:first-child > *:last-child {
   border-top-right-radius: 8px !important;
 }
+
+/* Table body background */
+.table-cs .ant-table-tbody > tr > td {
+  background-color: #1C2144 !important;
+  color: #ffffff !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Remove hover effect */
+.table-cs .ant-table-tbody > tr:hover > td {
+  background-color: #1C2144 !important;
+}
+
+/* Table empty state */
+.table-cs .ant-empty-description {
+  color: #ffffff;
+}
+
 
 .table-dark .ant-table-thead {
   background: transparent !important;
@@ -851,6 +877,10 @@ body.ltr {
   margin-inline-start: 0px !important;
   margin-inline-end: 4% !important;
 }
+.ant-picker {
+  background-color: #202452;
+  color:#fff
+}
 
 .bg-green {
   background-color: var(--green) !important;
@@ -886,7 +916,7 @@ body.ltr {
   font-size: 13px;
   border-radius: 7px;
   border: 1px solid var(--border-gray);
-  background-color: #fff !important;
+  background-color: #000 !important;
 }
 
 .tabs-fill .ant-tabs-tab-active {
@@ -1050,9 +1080,13 @@ body.ltr {
   width: 100%;
 }
 
+.signup-page {
+  background-color: #000;
+}
+
 /* login or signup or forgot form css */
 .signup-form-container {
-  background: #fff;
+  background: #000;
   display: flex;
   align-items: center;
   justify-content: center;

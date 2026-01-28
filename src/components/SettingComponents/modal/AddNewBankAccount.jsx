@@ -142,7 +142,7 @@ const AddNewBankAccount = ({ visible, onClose, edititem, settingId }) => {
             {!edititem && (
               <Text className="fs-14">
                 {t(
-                  "Securely link your bank account to receive payments for completed deals. Make sure the IBAN is correct to avoid payout delays."
+                  "Securely link your bank account to receive payments for Confirmed Reservations. Make sure the IBAN is correct to avoid payout delays."
                 )}
               </Text>
             )}

@@ -9,7 +9,7 @@ const FinancePage = () => {
       <Flex vertical gap={24}>
         <Flex vertical gap={2}>
           <Title level={4} className="m-0">
-            {t("Finance")}
+            {t("Automation")}
           </Title>
         </Flex>
         <FinanceCard />

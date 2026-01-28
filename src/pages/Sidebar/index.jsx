@@ -4,34 +4,19 @@ import { useTranslation } from "react-i18next";
 import "./index.css";
 import { Layout, Menu, Image, Space, Divider } from "antd";
 import { Notifications, UserDropdown } from "../../components/Header";
-import { BusinesslIstingPage } from "../BusinesslIstingPage";
+import { VinManagementPage } from "../VinManagementPage";
 import {
-  AddArticle,
-  AddNewCategory,
-  AddRolePermission,
-  BusinessDealsDetails,
-  CreateBusinessList,
-  SingleviewBusinesslist,
+  SingleviewVinList,
 } from "../../components";
-import { CategoriesManagement } from "../CategoriesManagement";
+import { DocumentInvoicePage } from "../DocumentInvoicePage";
 import { UserManagement } from "../UserManagement";
-import { MeetingRequestPage } from "../MeetingRequestPage";
-import { BusinessDealsPage } from "../BusinessDealsPage";
-import { RolePermission } from "../RolePermission";
-import { StaffMembersPage } from "../StaffMembersPage";
-import { ContactRequestPage } from "../ContactRequestPage";
-import { PushNotificationManagerPage } from "../PushNotificationManagerPage";
-import { ArticlePage } from "../ArticlePage";
-import { TermOfUsePage } from "../TermOfUsePage";
-import { EndaTermPage } from "../EndaTermPage";
-import { PrivacyPolicyPage } from "../PrivacyPolicyPage";
-import { WebsiteTraficAnalysisPage } from "../WebsiteTraficAnalysisPage";
+import { BlockChain } from "../BlockChain";
+import { Automation } from "../Automation";
+import { ConditionMatrix } from "../ConditionMatrix";
+import { AuditLogsPage } from "../AuditLogsPage";
 import { Alerts } from "../Alerts";
 import { SettingsPage } from "../SettingsPage";
-import { FinancePage } from "../FinancePage";
-import { FaqsPage } from "../FaqsPage";
 import { Dashboard } from "../Dashboard";
-import { DSATermsPage } from "../DSATermsPage";
 
 const { Header, Sider, Content } = Layout;
 const Sidebar = () => {
@@ -67,80 +52,53 @@ const Sidebar = () => {
   }
 
   useEffect(() => {
-    let tab = location?.pathname?.split("/")[1];
-    tab =
-      tab === ""
-        ? "1"
-        : tab === "businesslist" ||
-          tab === "businesslisting" ||
-          tab === "createbusinesslist"
-        ? "2"
-        : tab === "categorymanagement" ||
-          tab === "addnewcategory" ||
-          tab === "addnewcategory/detail"
-        ? "3"
-        : tab === "usermanagement"
-        ? "4"
-        : tab === "meetingrequest"
-        ? "5"
-        : tab === "businessdeal"
-        ? "6"
-        : tab === "rolepermission" || tab === "addrolepermission"
-        ? "7"
-        : tab === "staffmembers"
-        ? "8"
-        : tab === "finance"
-        ? "9"
-        : tab === "webtrafficanalysis"
-        ? "10"
-        : tab === "articles" || tab === "articles/add"
-        ? "11a"
-        : tab === "faqs"
-        ? "11"
-        : tab === "termofuse"
-        ? "12"
-        : tab === "endaterm"
-        ? "13"
-        : tab === "dsaterms"
-        ? "19"
-        : tab === "privacypolicy"
-        ? "14"
-        : tab === "contactrequests"
-        ? "15"
-        : tab === "pushnotificationmanager"
-        ? "16"
-        : tab === "alertpage"
-        ? "17"
-        : tab === "settings"
-        ? "18"
-        : "1";
-    setCurrentTab(tab);
-  }, [location]);
+    const tab = location.pathname.split("/")[1];
+  
+    const tabMap = {
+      "": "1",
+      dashboard: "1",
+  
+      vinmanagement: "2",
+      businesslist: "2",
+      businesslisting: "2",
+      createbusinesslist: "2",
+  
+      docinvoice: "3",
+  
+      usermanagement: "4",
+  
+      blockchain: "5",
+  
+      automation: "6",
+      conditionmatrix: "7",
+  
+      auditlogs: "8",
+  
+      alertpage: "9",
+      notifications: "9",
+      pushnotificationmanager: "9",
+      notificationdetails: "9",
+  
+      settings: "10",
+    };
+  
+    setCurrentTab(tabMap[tab] || "1");
+  }, [location.pathname]);
+  
+  
 
   const menuItems = useMemo(
     () => [
       getItem(t("Dashboard"), "1"),
-      getItem(t("Business Listing"), "2"),
-      getItem(t("Categories Management"), "3"),
+      getItem(t("VIN Management"), "2"),
+      getItem(t("Documents & Invoices"), "3"),
       getItem(t("User Management"), "4"),
-      getItem(t("Meeting Requests"), "5"),
-      getItem(t("Business Deals"), "6"),
-      getItem(t("Roles & Permissions"), "7"),
-      getItem(t("Staff Members"), "8"),
-      getItem(t("Finance"), "9"),
-      getItem(t("Website Pages"), "sub1", null, [
-        getItem(t("Website Traffic Analysis"), "10"),
-        getItem(t("Articles"), "11a"),
-        getItem(t("FAQs"), "11"),
-        getItem(t("Terms of Use"), "12"),
-        getItem(t("E-NDA Term"), "13"),
-        getItem(t("DSA Term"), "19"),
-        getItem(t("Privacy Policy"), "14"),
-      ]),
-      getItem(t("Contact Requests"), "15"),
-      getItem(t("Push Notification Manager"), "16"),
-      getItem(t("Alert"), "17"),
-      getItem(t("Settings"), "18"),
+      getItem(t("Blockchain"), "5"),
+      getItem(t("Automation"), "6"),
+      getItem(t("Condition Matrix"), "7"),
+      getItem(t("Audit Logs"), "8"),
+      getItem(t("Notifications"), "9"),
+      getItem(t("System Control"), "10"),
     ],
     [i18n.language]
   );
@@ -152,61 +110,31 @@ const Sidebar = () => {
         navigate("/", { replace: true });
         break;
       case "2":
-        navigate("/businesslist", { replace: true });
+        navigate("/vinmanagement", { replace: true });
         break;
       case "3":
-        navigate("/categorymanagement", { replace: true });
+        navigate("/docinvoice", { replace: true });
         break;
       case "4":
         navigate("/usermanagement", { replace: true });
         break;
       case "5":
-        navigate("/meetingrequest", { replace: true });
+        navigate("/blockchain", { replace: true });
         break;
       case "6":
-        navigate("/businessdeal", { replace: true });
+        navigate("/automation", { replace: true });
         break;
       case "7":
-        navigate("/rolepermission", { replace: true });
+        navigate("/conditionmatrix", { replace: true });
         break;
       case "8":
-        navigate("/staffmembers", { replace: true });
+        navigate("/auditlogs", { replace: true });
         break;
       case "9":
-        navigate("/finance", { replace: true });
-        break;
-      case "10":
-        navigate("/webtrafficanalysis", { replace: true });
-        break;
-      case "11a":
-        navigate("/articles", { replace: true });
-        break;
-      case "11":
-        navigate("/faqs", { replace: true });
-        break;
-      case "12":
-        navigate("/termofuse", { replace: true });
-        break;
-      case "13":
-        navigate("/endaterm", { replace: true });
-        break;
-      case "14":
-        navigate("/privacypolicy", { replace: true });
-        break;
-      case "15":
-        navigate("/contactrequests", { replace: true });
-        break;
-      case "16":
-        navigate("/pushnotificationmanager", { replace: true });
-        break;
-      case "17":
         navigate("/alertpage", { replace: true });
         break;
-      case "18":
+      case "10":
         navigate("/settings", { replace: true });
-        break;
-      case "19":
-        navigate("/dsaterms", { replace: true });
         break;
       default:
         break;
@@ -236,8 +164,8 @@ const Sidebar = () => {
           <Image
             width={collapsed ? "100%" : 130}
             height={"auto"}
-            src="/assets/images/logo.webp"
-            alt="jusoor logo"
+            src="/assets/images/logo.svg"
+            alt="Azotto logo"
             preview={false}
             fetchPriority="high"
             className="m-0"
@@ -280,62 +208,16 @@ const Sidebar = () => {
         <Content className="scroll-bar structure-content-area-cs">
           <Routes>
             <Route path="/" element={<Dashboard />} />
-            <Route path="/businesslist" element={<BusinesslIstingPage />} />
-            <Route
-              path="/businesslisting/details/:id"
-              element={<SingleviewBusinesslist />}
-            />
-            <Route
-              path="/createbusinesslist"
-              element={<CreateBusinessList />}
-            />
-            <Route
-              path="/categorymanagement"
-              element={<CategoriesManagement />}
-            />
-            <Route path="/addnewcategory" element={<AddNewCategory />} />
-            <Route
-              path="/addnewcategory/detail/:id"
-              element={<AddNewCategory />}
-            />
+            <Route path="/vinmanagement" element={<VinManagementPage />} />
+            <Route path="/vinmanagement/details/:id" element={<SingleviewVinList />}/>
+            <Route path="/docinvoice"  element={<DocumentInvoicePage />}/>
             <Route path="/usermanagement" element={<UserManagement />} />
-            <Route path="/meetingrequest" element={<MeetingRequestPage />} />
-            <Route
-              path="/businessdeal"
-              element={<BusinessDealsPage setCompleteDeal={setCompleteDeal} />}
-            />
-            <Route
-              path="/businessdeal/details/:id"
-              element={<BusinessDealsDetails completedeal={completedeal} />}
-            />
-            <Route path="/rolepermission" element={<RolePermission />} />
-            <Route path="/staffmembers" element={<StaffMembersPage />} />
-            <Route
-              path="/webtrafficanalysis"
-              element={<WebsiteTraficAnalysisPage />}
-            />
-            <Route path="/articles" element={<ArticlePage />} />
-            <Route path="/articles/add" element={<AddArticle />} />
-            <Route path="/articles/add/:id" element={<AddArticle />} />
-            <Route path="/termofuse" element={<TermOfUsePage />} />
-            <Route path="/endaterm" element={<EndaTermPage />} />
-            <Route path="/dsaterms" element={<DSATermsPage />} />
-            <Route path="/privacypolicy" element={<PrivacyPolicyPage />} />
-            <Route path="/contactrequests" element={<ContactRequestPage />} />
-            <Route
-              path="/pushnotificationmanager"
-              element={<PushNotificationManagerPage />}
-            />
+            <Route path="/blockchain" element={<BlockChain />} />
+            <Route path="/automation" element={<Automation setCompleteDeal={setCompleteDeal} />} />
+            <Route path="/auditlogs" element={<AuditLogsPage />} />
             <Route path="/alertpage" element={<Alerts />} />
             <Route path="/settings" element={<SettingsPage />} />
-            <Route path="/finance" element={<FinancePage />} />
-            <Route path="/faqs" element={<FaqsPage />} />
-            <Route path="/rolepermission" element={<RolePermission />} />
-            <Route path="/addrolepermission" element={<AddRolePermission />} />
-            <Route
-              path="/addrolepermission/:id"
-              element={<AddRolePermission />}
-            />
+            <Route path="/conditionmatrix" element={<ConditionMatrix />} />
           </Routes>
         </Content>
       </Layout>

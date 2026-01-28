@@ -5,7 +5,7 @@ export const ModuleTopHeading = ({ name, onClick, level }) => {
     <Row>
       <Col span={24}>
         <Space className="align-center">
-          <Typography.Title level={level} className="my-0 fw-500">
+          <Typography.Title level={level} className="my-0 fw-500 text-white">
             {name}
           </Typography.Title>
           {onClick ? (

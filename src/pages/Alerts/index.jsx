@@ -98,17 +98,17 @@ const Alerts = () => {
           <ModuleTopHeading level={4} name={t("Alerts")} />
         </Col>
         <Col span={24}>
-          <Card className="overflow-style">
+          <Card className="overflow-style main-card-color">
             {groups?.map((day, index) => (
               <Flex vertical className="mt-2" key={`${day.time}-${index}`}>
-                <Text>{new Date(day.time).toLocaleDateString()}</Text>
+                <Text className="text-white">{new Date(day.time).toLocaleDateString()}</Text>
                 {day?.notifications?.map((notif) => (
                   <Flex vertical className="mt-2 ml-15" gap={4} key={notif.id}>
                     <Flex justify="space-between">
-                      <Title level={5} className="m-0 fw-500">
+                      <Title level={5} className="m-0 fw-500 text-white">
                         {t(notif?.name || "Notification")}
                       </Title>
-                      <Text className="text-gray fs-12">
+                      <Text className="text-white fs-12">
                         {new Date(notif.createdAt).toLocaleTimeString([], {
                           hour: "2-digit",
                           minute: "2-digit",
@@ -134,7 +134,7 @@ const Alerts = () => {
             )}
 
             {!hasMore && groups.length === 0 && (
-              <Text className="text-gray">{t("No alerts found")}</Text>
+              <Text className="text-white">{t("No alerts found")}</Text>
             )}
           </Card>
         </Col>

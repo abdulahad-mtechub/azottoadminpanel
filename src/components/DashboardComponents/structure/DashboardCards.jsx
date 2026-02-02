@@ -9,44 +9,44 @@ const { Title, Text } = Typography;
 const DashboardCards = () => {
   const { t } = useTranslation();
   const { formatNumber } = useFormatNumber();
-  const { data, error } = useQuery(GET_BUSINESS_STATS);
+  // const { data, error } = useQuery(GET_BUSINESS_STATS);
 
-  if (error) {
-    return (
-      <Card>
-        <Text type="danger">
-          {t("Error loading business stats:")} {error.message}
-        </Text>
-      </Card>
-    );
-  }
+  // if (error) {
+  //   return (
+  //     <Card>
+  //       <Text type="danger">
+  //         {t("Error loading business stats:")} {error.message}
+  //       </Text>
+  //     </Card>
+  //   );
+  // }
 
   // Destructure API response safely
-  const stats = data?.getBusinessStats || {};
+  // const stats = data?.getBusinessStats || {};
 
   const cardsData = [
     {
       id: 1,
       icon: "dc-1.png",
-      title: formatNumber(stats.totalBusinesses || 0),
+      title: 0,
       subtitle: "System Status",
     },
     {
       id: 2,
       icon: "dc-2.png",
-      title: formatNumber(stats.completedDeals || 0),
+      title: 0,
       subtitle: "Active VINs",
     },
     {
       id: 3,
       icon: "dc-3.png",
-      title: formatNumber(stats.requestMeetings || 0),
+      title: 0,
       subtitle: "Pending Blockchain Transactions",
     },
     {
       id: 4,
       icon: "dc-4.png",
-      title: formatNumber(stats.scheduleMeetings || 0),
+      title: 0,
       subtitle: "Alerts",
     },
   ];

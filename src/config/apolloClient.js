@@ -16,7 +16,7 @@ import {
   isAuthenticated,
 } from "../shared/tokenManager";
 
-const API_URL = "https://verify.jusoor-sa.co/graphql";
+const API_URL = "https://backend-appolo-azotto.mtechub.org/graphql";
 
 // HTTP Link
 const httpLink = createHttpLink({
@@ -50,7 +50,7 @@ const authLink = setContext(async (operation, { headers, skipAuth }) => {
 
 // WebSocket link for subscriptions
 const wsLink = new WebSocketLink({
-  uri: "wss://verify.jusoor-sa.co/subscriptions",
+  uri: "wss://backend-appolo-azotto.mtechub.org/subscriptions",
   options: {
     reconnect: true,
     connectionParams: () => {

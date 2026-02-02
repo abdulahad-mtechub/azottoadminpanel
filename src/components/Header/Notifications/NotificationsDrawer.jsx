@@ -53,7 +53,7 @@ const NotificationsDrawer = ({ visible, onClose }) => {
       //     </Button>
       // }
     >
-      <List
+      {/* <List
         itemLayout="horizontal"
         dataSource={data?.getNotifications?.notifications || []}
         renderItem={(item) => (
@@ -81,7 +81,7 @@ const NotificationsDrawer = ({ visible, onClose }) => {
             />
           </List.Item>
         )}
-      />
+      /> */}
     </Drawer>
   );
 };

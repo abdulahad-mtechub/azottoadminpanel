@@ -200,7 +200,7 @@ const LoginPage = () => {
             <Flex vertical justify="center" align="center" className="logo-sp">
               <Image
                 src="/assets/images/logo.svg"
-                alt="jusoor-logo"
+                alt="azotto-logo"
                 fetchPriority="high"
                 width={200}
                 preview={false}

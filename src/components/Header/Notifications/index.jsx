@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
 import { Badge, Button, Image } from "antd";
 import NotificationsDrawer from "./NotificationsDrawer";
-import {
-  GET_NOTIFICATIONS,
-  GET_NOTIFICATION_COUNT,
-} from "../../../graphql/query";
+import { GET_NOTIFICATION_COUNT} from "../../../graphql/query";
 import { NEW_NOTIFICATION_SUBSCRIPTION } from "../../../graphql/subscription";
 import { useQuery, useSubscription } from "@apollo/client";
 import { getUserId } from "../../../shared/tokenManager";
@@ -43,7 +40,7 @@ export const Notifications = () => {
     <>
       <div>
         <Badge
-          count={countData?.getNotificationCount}
+          // count={countData?.getNotificationCount}
           overflowCount={99}
           className=""
         >

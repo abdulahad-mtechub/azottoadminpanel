@@ -205,7 +205,7 @@ const AddNewBankAccount = ({ visible, onClose, edititem, settingId }) => {
                     />
                     <Text className="text-brand fs-13">
                       {t(
-                        "Your banking details are encrypted and used only for secure payouts through Jusoor."
+                        "Your banking details are encrypted and used only for secure payouts through Azotto."
                       )}
                     </Text>
                   </Flex>

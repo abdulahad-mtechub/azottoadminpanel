@@ -16,7 +16,7 @@ import {
   isAuthenticated,
 } from "../shared/tokenManager";
 
-const API_URL = "https://backend-appolo-azotto.mtechub.org/graphql";
+const API_URL = "http://localhost:8000/graphql";
 
 // HTTP Link
 const httpLink = createHttpLink({

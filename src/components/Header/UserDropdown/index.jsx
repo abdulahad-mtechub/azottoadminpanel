@@ -87,7 +87,7 @@ const UserDropdown = () => {
                   data?.getUser?.name.slice(1) || "N/A"}
               </Typography.Text>
               <Typography.Text className="text-gray fs-12">
-                {data?.getUser?.role?.name || "N/A"}
+                {data?.getUser?.role || "N/A"}
               </Typography.Text>
             </Flex>
             <Avatar

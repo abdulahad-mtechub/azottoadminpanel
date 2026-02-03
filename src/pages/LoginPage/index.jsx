@@ -30,12 +30,6 @@ const LoginPage = () => {
   const { login } = useContext(AuthContext);
   const [messageApi, contextHolder] = message.useMessage();
   const [form] = Form.useForm();
-  const [selectedLang, setSelectedLang] = useState({
-    key: "1",
-    label: "EN",
-    icon: "assets/icons/en.png",
-  });
-  const [getSeetings] = useLazyQuery(GET_SETTINGS);
 
   const [loginUser, { loading }] = useMutation(LOGIN, {
     onError: (error) => {
@@ -59,26 +53,6 @@ const LoginPage = () => {
     },
   });
 
-  const [language, setLanguage] = useState();
-  useEffect(() => {
-    let lang = localStorage.getItem("lang");
-    setLanguage(lang || "en");
-    i18n.changeLanguage(lang || "en");
-    if (lang === "ar") {
-      setSelectedLang({
-        key: "2",
-        label: "AR",
-        icon: "assets/icons/ar.png",
-      });
-    } else {
-      setSelectedLang({
-        key: "1",
-        label: "EN",
-        icon: "assets/icons/en.png",
-      });
-    }
-  }, []);
-
   const handleFinish = async (values) => {
     const email = values.email.toLowerCase().trim();
     const password = values.password;
@@ -96,19 +70,11 @@ const LoginPage = () => {
       });
 
       // Check if login was successful
-      if (data?.staffLogin?.token && data?.staffLogin?.refreshToken) {
+      if (data?.staffLogin?.token) {
         const user = data.staffLogin.user;
 
-        // Check if user status is active
-        if (user?.status === "inactive" || user?.status === "INACTIVE") {
-          messageApi.error(
-            t("Your account is inactive. Please contact administrator.")
-          );
-          return;
-        }
-
         // Use the new token management system
-        login(data.staffLogin.token, data.staffLogin.refreshToken, user);
+        login(data.staffLogin.token,null, user);
 
         messageApi.success(t("Login successful! Redirecting..."));
 

@@ -6,25 +6,7 @@ const ME = gql`
       id
       name
       email
-      phone
-      city
-      district
-      documents {
-        fileName
-        filePath
-      }
-      banks {
-        accountTitle
-        bankName
-        iban
-        cardNumber
-        cardType
-        isActive
-      }
-      role {
-        id
-        name
-      }
+      role
     }
   }
 `;
@@ -39,27 +21,19 @@ const GETCUSTOMERROLE = gql`
 `;
 
 const USERS = gql`
-  query GetUsers($limit: Int, $offset: Int, $filter: UserFilterInput) {
-    getUsers(limit: $limit, offset: $offset, filter: $filter) {
-      totalCount
-      users {
-        id
-        name
-        email
-        phone
-        district
-        city
-        status
-        type
-        documents {
-          fileName
-          filePath
-          id
-          title
-        }
-      }
+  query GetUsers($limit: Int, $offset: Int, $roles: [UserRole!], $search: String) {
+  getUsers(limit: $limit, offset: $offset, roles: $roles, search: $search) {
+    totalCount
+    users {
+      id
+      name
+      email
+      role
+      walletAddress
+      createdAt
     }
   }
+}
 `;
 const CUSTOMER = gql`
   query GetCustomers {

@@ -18,14 +18,11 @@ import { ViewIdentity } from "../modals";
 import { UPDATE_USER, DELETE_USER } from "../../../graphql/mutation";
 import { USERS } from "../../../graphql/query/user";
 import { useLazyQuery, useMutation } from "@apollo/client";
-import { useTranslation } from "react-i18next";
-import { useDistricts, useCities } from "../../../shared";
+import { useCities } from "../../../shared";
 
 const { Text } = Typography;
 const UserManagementTable = ({ setVisible, setEditItem }) => {
   const [form] = Form.useForm();
-  const { t } = useTranslation();
-  const districts = useDistricts();
   const cities = useCities();
   const [selectedStatus, setSelectedStatus] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -85,7 +82,7 @@ const UserManagementTable = ({ setVisible, setEditItem }) => {
 
   const [deleteUser, { loading: deleting }] = useMutation(DELETE_USER, {
     onCompleted: () => {
-      messageApi.success(t("User deleted successfully!"));
+      messageApi.success("User deleted successfully!");
       loadUsers({
         variables: {
           limit: pageSize,
@@ -95,50 +92,33 @@ const UserManagementTable = ({ setVisible, setEditItem }) => {
       });
     },
     onError: (err) => {
-      messageApi.error(err.message || t("Something went wrong!"));
+      messageApi.error(err.message || "Something went wrong!");
     },
   });
 
   const usermanageColumn = [
     {
-      title: t("Name"),
+      title: "Name",
       dataIndex: "name",
     },
     {
-      title: t("Email"),
+      title: "Email",
       dataIndex: "email",
     },
     {
-      title: t("Role"),
+      title: "Role",
       dataIndex: "role",
-      render: (district) => t(district),
     },
     {
-      title: t("Wallet Address"),
-      dataIndex: "wallet",
-      render: (city) => t(city),
+      title: "Wallet Address",
+      dataIndex: "walletAddress",
     },
     {
-      title: t("Status"),
-      dataIndex: "status",
-      render: (status) => {
-        if (status === "verified") {
-          return <Text className="btnpill fs-12 success">{t("Active")}</Text>;
-        } else if (status === "pending") {
-          return <Text className="btnpill fs-12 inactive">{t("Pending")}</Text>;
-        } else if (status === "inactive") {
-          return (
-            <Text className="btnpill fs-12 inactive">{t("Inactive")}</Text>
-          );
-        }
-      },
-    },
-    {
-      title: t("Created At"),
+      title: "Created At",
       dataIndex: "createdAt",
     },
     {
-      title: t("Action"),
+      title: "Action",
       key: "action",
       fixed: "right",
       width: 100,
@@ -153,9 +133,9 @@ const UserManagementTable = ({ setVisible, setEditItem }) => {
                 },
               },
             });
-            messageApi.success(t("User status updated successfully!"));
+            messageApi.success("User status updated successfully!");
           } catch (err) {
-            messageApi.error(err.message || t("Something went wrong!"));
+            messageApi.error(err.message || "Something went wrong!");
           }
         };
         return (
@@ -171,7 +151,7 @@ const UserManagementTable = ({ setVisible, setEditItem }) => {
                         setEditItem(row);
                       }}
                     >
-                      {t("Edit")}
+                      Edit
                     </NavLink>
                   ),
                   key: "1",
@@ -186,7 +166,7 @@ const UserManagementTable = ({ setVisible, setEditItem }) => {
                               handleStatusChange(row);
                             }}
                           >
-                            {t("Inactive")}
+                            Inactive
                           </NavLink>
                         ),
                         key: "2",
@@ -201,7 +181,7 @@ const UserManagementTable = ({ setVisible, setEditItem }) => {
                               handleStatusChange(row);
                             }}
                           >
-                            {t("Verify")}
+                            Verify
                           </NavLink>
                         ),
                         key: "2",
@@ -216,7 +196,7 @@ const UserManagementTable = ({ setVisible, setEditItem }) => {
                         setDeleteVisible(true);
                       }}
                     >
-                      {t("Delete")}
+                      Delete
                     </NavLink>
                   ),
                   key: "3",
@@ -230,7 +210,7 @@ const UserManagementTable = ({ setVisible, setEditItem }) => {
                         SetViewState(row);
                       }}
                     >
-                      {t("View Passport & National ID")}
+                      View Passport & National ID
                     </NavLink>
                   ),
                   key: "4",
@@ -311,8 +291,11 @@ const UserManagementTable = ({ setVisible, setEditItem }) => {
   const usermanageData =
     data?.getUsers?.users?.map((user) => ({
       key: user.id,
-      fullname: user.name,
+      name: user.name,
       email: user.email,
+      role: user.role,
+      walletAddress: user.walletAddress,
+      createdAt: user.createdAt,
       district: user.district,
       city: user.city,
       mobileno: user.phone,
@@ -324,14 +307,14 @@ const UserManagementTable = ({ setVisible, setEditItem }) => {
   const total = data?.getUsers?.totalCount;
 
   const typeItems = [
-    { id: "new", name: t("New") },
-    { id: "old", name: t("Old") },
+    { id: "new", name: "New" },
+    { id: "old", name: "Old" },
   ];
 
   const statusItems = [
-    { id: "verified", name: t("Active") },
-    { id: "inactive", name: t("Inactive") },
-    { id: "pending", name: t("Pending") },
+    { id: "verified", name: "Active" },
+    { id: "inactive", name: "Inactive" },
+    { id: "pending", name: "Pending" },
   ];
 
   return (
@@ -346,7 +329,7 @@ const UserManagementTable = ({ setVisible, setEditItem }) => {
                   <SearchInput
                     withoutForm
                     name="name"
-                    placeholder={t("Search")}
+                    placeholder="Search"
                     prefix={
                       <img
                         src="/assets/icons/search.png"
@@ -381,7 +364,7 @@ const UserManagementTable = ({ setVisible, setEditItem }) => {
                     withoutForm
                     options={typeItems}
                     onChange={handleTypeChange}
-                    placeholder={t("Role")}
+                    placeholder="Role"
                     allowClear
                     showKey
                   />
@@ -389,7 +372,7 @@ const UserManagementTable = ({ setVisible, setEditItem }) => {
                     withoutForm
                     options={statusItems}
                     onChange={handleStatusChange}
-                    placeholder={t("Status")}
+                    placeholder="Status"
                     allowClear
                     showKey
                   />
@@ -432,10 +415,8 @@ const UserManagementTable = ({ setVisible, setEditItem }) => {
       <DeleteModal
         visible={deleteVisible}
         onClose={() => setDeleteVisible(false)}
-        title={t("Are you sure?")}
-        subtitle={t(
-          "This action cannot be undone. Are you sure you want to delete this user?"
-        )}
+        title="Are you sure?"
+        subtitle="This action cannot be undone. Are you sure you want to delete this user?"
         type="danger"
         loading={deleting}
         onConfirm={async () => {

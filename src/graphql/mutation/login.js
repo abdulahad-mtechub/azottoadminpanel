@@ -20,15 +20,13 @@ export const CREATE_STAFF_MEMBER = gql`
 
 export const LOGIN = gql`
   mutation StaffLogin($password: String!, $email: String) {
-    staffLogin(password: $password, email: $email) {
-      token
-      refreshToken
-      user {
-        id
-        status
-      }
+  staffLogin(password: $password, email: $email) {
+    token
+    user {
+      id
     }
   }
+}
 `;
 
 export const REFRESH_TOKEN = gql`
